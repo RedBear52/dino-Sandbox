@@ -33,42 +33,20 @@ function clearForm() {
   eraser.outerHTML=''
 };
 
-//Currently showing via console
-//NEXT STEP: will need to render via DOM!!
+//display humanData on the DOM
 function showMeHuman (humanSpecs) {
   
-  let renderedUserData = `<div class="grid-container" id="grid-table">
-    <h2>${humanSpecs.name}</h2>
-    <p>${humanSpecs.heightFeet}</p>
-    <p>${humanSpecs.heightInches}</p>
-    <p>${humanSpecs.weight}</p>
-    <p>${humanSpecs.diet}</p>
+  let renderedUserData = 
+  `<div class="grid-content"">
+    <h3>${humanSpecs.name}</h3>
+    <p><img src="${humanSpecs.image}"</p>
+    <p>Height: ${humanSpecs.heightFeet} ft ${humanSpecs.heightInches} in</p>
+    <p>Weight: ${humanSpecs.weight} lbs</p>
+    <p>Diet: ${humanSpecs.diet}</p>
   </div>`
   
   const container=document.getElementById("grid");
       container.innerHTML=renderedUserData;
-
-  // {/* humanSpecs.weight  
-      // humanSpecs.heightFeet  
-      // humanSpecs.heightInches  
-      // humanSpecs.diet  */}
-      // <img src="images/human.png">
-
-  // let nameEle = document.createElement("p")
-  // let heightEle = document.createElement("p").innerHTML+=humanSpecs.heightFeet
-  // let heightInchesEle = document.createElement("p").innerHTML+=humanSpecs.heightInches
-  // let weightEle = document.createElement("p").innerHTML+=humanSpecs.weight
-  // let dietEle = document.createElement("p").innerHTML+=humanSpecs.diet
-  // let imageEle = document.createElement("p").innerHTML+=humanSpecs.diet
-
-  // nameEle.innerHTML="humanSpecs.name"
-  // // nameEle.appendChild(nameNode)
-  // heightEle
-  // heightInchesEle
-  // weightEle
-  // dietEle
-  // imageEle
-
 };
 
 
