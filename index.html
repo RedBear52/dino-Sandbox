@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+    <title>Dinosaurs: Interactive Fact Sheet!</title>
+    <link href='https://fonts.googleapis.com/css?family=Frijole' rel='stylesheet'>
+</head>
+<body>
+  <div class="header">
+    <header>
+      <h2>Natural History Museum</h2>
+      <h1>Dinosaurs</h1>
+      <h3>How do you compare?</h3>
+    </header>
+  </div>
+
+  <div class="form_container" id="form_container">
+  <form class="form" id="form">
+
+  <div class="form_input">
+    <p>Name:</p>
+    <input class="form-field_long" type="text" id="user_name" name="name">
+  </div>
+
+    <br>
+
+  <div class="form_input" id="user-height">
+    <p>Height:</p>
+    <label>
+      ft
+      <input class="form-field_short" id="height_feet" name="height_feet">
+    </label>
+    <label>
+      in
+      <input class="form-field_short" id="height_inches" name="height_inches">
+    </label>
+  </div>
+
+    <br>
+
+  <div class="form_input" id="user-weight">
+    <p>Weight:</p>
+    <label>
+      <input class="form-field_long" id="user_weight" name="user_weight">
+      lbs
+    </label>
+  </div>
+
+    <br>
+
+  <div class="form_input">
+    <p>Diet:</p>
+    <select  id="user_diet">
+      <option>Herbivore</option>
+      <option>Carnivore</option>
+      <option>Omnivore</option>
+    </select>
+  </div>
+
+  <div>
+    <button class="button" id="btn" type="submit">Compare Me!</button>
+  </div>
+
+  </form>
+  </div>
+
+  <table class="grid" id="grid">
+
+  </table>
+
+  <script src="app.js"></script>
+  </body>
