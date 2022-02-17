@@ -11,7 +11,7 @@ body {
 
 h2 {
   font-family: monospace;
-  font-size: 3.5em;
+  font-size: 2.5em;
   margin: 0;
 }
 
@@ -23,7 +23,7 @@ h3 {
 
 h1 {
   font-family: 'Frijole', sans-serif;
-  font-size: 65px;
+  font-size: 8em;
   font-weight: 400;
   padding-top: 0em;
   padding-bottom: 0em;
@@ -97,7 +97,7 @@ label {
   max-width: 360px;
   padding: 1.5em;
   margin: 0 auto;
-  margin-top: 1em;
+  margin-top: 2em;
 }
 
 #user-height {
