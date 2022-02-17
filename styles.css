@@ -92,12 +92,15 @@ label {
 
 .form_container {
   text-align: left;
-  background: lightblue;
+  background: rgba(56, 168, 77, 0.525);
   background-blend-mode: lighten;
-  max-width: 360px;
-  padding: 1.5em;
+  max-width: 420px;
+  padding: 3em;
+  padding-left: 5em;
+  padding-right: 5em;
   margin: 0 auto;
   margin-top: 2em;
+  box-shadow: 6px 6px px 2px #3492a7;
 }
 
 #user-height {
@@ -128,4 +131,10 @@ label {
 div {
   /* font-size: .5em; */
   margin 0 auto;
+}
+
+.header {
+  box-shadow: 2px 2px 72px 1px #3492a7;
+  background-color: rgba(56, 168, 77, 0.525);
+  padding: 1.5em;
 }
