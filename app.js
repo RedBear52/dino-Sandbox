@@ -100,7 +100,6 @@ function populateGrid(humanSpecs) {
   shuffleCreatures()
   creatureArray.splice(4, 0, humanSpecs)
   buildPigeon()
-  
   let infoGraphic = document.getElementById('grid')
   let index = 0
   for (let r = 0; r < 3; r++) {
@@ -111,10 +110,18 @@ function populateGrid(humanSpecs) {
       let newFrame = newRow.appendChild(newCell)
       let newPic = document.createElement('img')
       newPic.src = creatureArray[index].image
-      newCell.innerHTML+= `<h3>${creatureArray[index].species}</h3> `
-      newFrame.appendChild(newPic)
-      newCell.innerHTML+= "<br>" + creatureArray[index].fact
-      index += 1
+      if (index === 4) {
+        newCell.innerHTML+= `<h3>${creatureArray[index].name}</h3> `
+        newFrame.appendChild(newPic)
+        newCell.innerHTML+= "<br>" + `${creatureArray[index].name} is a human with an interest in dinosaurs!`
+        index +=1
+      } else {
+        newCell.innerHTML+= `<h3>${creatureArray[index].species}</h3> `
+        newFrame.appendChild(newPic)
+        newCell.innerHTML+= "<br>" + creatureArray[index].fact
+        index += 1
+      }
+      
     }
   }
 };
