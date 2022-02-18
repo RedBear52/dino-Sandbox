@@ -31,7 +31,7 @@ const creatureArray = [
   stegosaurus = new Creature("stegosaurus", 79, 11600, "images/stegosaurus.png", "herbivore", "The Stegosaurus had between 17 and 22 seperate places and flat spines.", "" ),
   elasmosaurus = new Creature("elasmosaurus", 59, 16000, "images/elasmosaurus.png", "carnivore", "Elasmosaurus was a marine reptile first discovered in Kansas.", ""),
   pteranodon = new Creature("pteranodon", 20, 40, "images/pteranodon.png", "carnivore", "Actually a flying reptile, the Pteranodon is not a dinosaur.", ""),
-  pigeon = new Creature("pigeon", 9, 0.5, "images/pigeon.png", "herbavore", "All birds are living dinosaurs.", "")
+  // pigeon = new Creature("pigeon", 9, 0.5, "images/pigeon.png", "herbavore", "All birds are living dinosaurs.", "")
 ]
 
 // add event listener to 'compare me' btn
@@ -40,6 +40,7 @@ const form = document.getElementById('form')
 form.addEventListener('submit', function (event) {
   event.preventDefault()
   buildHuman()
+  buildPigeon()
   clearForm()
 });
 
@@ -55,12 +56,17 @@ function buildHuman () {
   let species = "human"
   let fact = ""
   const userData = new Creature(species, height, weight, image, diet, fact, name);
-  creatureArray.push(userData)
+  // creatureArray.push(userData)
   // showMeHuman(userData)
   return populateGrid(userData)
 };
 
-let user = creatureArray[9]
+function buildPigeon() {
+  const pigeon = new Creature("pigeon", 9, 0.5, "images/pigeon.png", "herbavore", "All birds are living dinosaurs.", "")
+  return creatureArray.push(pigeon)
+}
+
+// let user = creatureArray[9]
 
 //clear form upon submission
 function clearForm() {
@@ -92,6 +98,9 @@ function shuffleCreatures () {
 //a function to dynamically generate a 3x3 grid dispalying user and dino data
 function populateGrid(humanSpecs) {
   shuffleCreatures()
+  creatureArray.splice(4, 0, humanSpecs)
+  buildPigeon()
+  
   let infoGraphic = document.getElementById('grid')
   let index = 0
   for (let r = 0; r < 3; r++) {
@@ -101,7 +110,6 @@ function populateGrid(humanSpecs) {
       let newCell = document.createElement('td')
       let newFrame = newRow.appendChild(newCell)
       let newPic = document.createElement('img')
-      // let randomNumber = Math.floor(Math.random() * 8)
       newPic.src = creatureArray[index].image
       newCell.innerHTML+= `<h3>${creatureArray[index].species}</h3> `
       newFrame.appendChild(newPic)
