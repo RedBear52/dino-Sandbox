@@ -9,7 +9,7 @@ body {
   font-family: monospace, sans-serif;
 }
 
-h2 {s
+h2 {
   font-family: monospace;
   font-size: 2.5em;
   margin: 0;
@@ -36,6 +36,7 @@ td {
   background: lightblue;
   /* opacity: 0.5; */
   padding: 1.5em;
+  box-shadow: 2px 2px 12px 2px #3492a7;
 }
 
 p {
@@ -100,7 +101,8 @@ label {
   padding-right: 5em;
   margin: 0 auto;
   margin-top: 2em;
-  box-shadow: 6px 6px px 2px #3492a7;
+  box-shadow: 1px 1px 6px 1px #3492a7;
+
 }
 
 #user-height {
