@@ -12,7 +12,7 @@ class Creature {
   }
 };
 
-// array of dino object literals, manually ported to .js file from .json file
+// array of dino object literals, manually curted and imported from .json file
 const creatureArray = [
   triceratops = new Creature("triceratops", 114, 13000, "images/triceratops.png", "herbivore", "First discovered in 1889 by Othniel Charles Marsh", ""),
   tyrannosaurus = new Creature("tyrannosaurus", 144, 11905, "images/tyrannosaurus rex.png", "carnivore", "The largest known skull measures in at 5 feet long.", ""),
@@ -23,9 +23,15 @@ const creatureArray = [
   pteranodon = new Creature("pteranodon", 20, 40, "images/pteranodon.png", "carnivore", "Actually a flying reptile, the Pteranodon is not a dinosaur.", ""),
 ]
 
-// add event listener to 'compare me' btn
-// listener sets off a sequence of functions 
+// grabs the 'form' element and stores it in the 'form' variable
 const form = document.getElementById('form')
+//eventListener added to 'compare me' (form submit) btn
+/* eventListener sets off initial functions: 
+      prevent rendered elements from immediately being cleared off screen
+      invoke buildHuman function
+      invoke buildPigeon function
+      invoke clearForm function to remove form upon submission
+*/
 form.addEventListener('submit', function (event) {
   event.preventDefault()
   buildHuman()
@@ -34,12 +40,8 @@ form.addEventListener('submit', function (event) {
 // TODO need to validate input or, at very least, require input in all fields 
 });
 
-// function randComp(input) {
-//   const compArray = [compareDiet(input), compareHeight(input), compareWeight(input)] 
-//   const randomNumber = Math.floor(Math.random(0, 2))
-//   return compArray[randomNumber]
-// }
-//instantiate Human object from user input
+//instantiates Human object from user input
+//then calls the random comparison function
 function buildHuman () {
   let name = document.querySelector("#user_name").value
   let heightFeet = parseFloat(document.getElementById("height_feet").value)
@@ -51,20 +53,30 @@ function buildHuman () {
   let species = "human"
   let fact = ""
   const userData = new Creature(species, height, weight, image, diet, fact, name);
-  const randomNumber = parseFloat(Math.floor(Math.random() * 3))
-  switch (randomNumber) {
-    case 0: 
-      compareDiet(userData);
-      break;
-    case 1: 
-      compareWeight(userData);
-      break;
-    case 2: 
-      compareHeight(userData);
-  }
+  randComp(userData) 
 }; 
 
-// instantiate separate pigeon object and push to the end of creatureArray
+//invokes one of three comparison functions randomly using a switch statement
+function randComp(humanSpecs) {
+  const randomNumber = parseFloat(Math.floor(Math.random() * 4))
+  switch (randomNumber) {
+    case 0: 
+      compareDiet(humanSpecs);
+      break;
+    case 1: 
+      compareWeight(humanSpecs);
+      break;
+    case 2: 
+      compareHeight(humanSpecs);
+    case 3:
+      populateFacts(humanSpecs)
+  }
+}
+
+// instantiate separate pigeon object
+// pushes pigeon to the end of creatureArray
+/*NOTE: seems better to keep pigeon static at the end of the grid + I thought I remembered that 
+being a part of the assignment (although I can no longer locate that instruction?!)*/
 function buildPigeon() {
   const pigeon = new Creature("pigeon", 9, 0.5, "images/pigeon.png", "herbavore", "All birds are living dinosaurs.", "")
   return creatureArray.push(pigeon)
@@ -75,17 +87,15 @@ function clearForm() {
   document.getElementById('form_container').outerHTML=''
 };
 
-//Shuffle array using sort method, this seems a cleaner approach than the Fisher-Yates modern shuffle algorithm 
+//Shuffle array using sort method
+//in this case, seems a cleaner approach than the Fisher-Yates modern shuffle algorithm 
 function shuffleCreatures () {
   creatureArray.sort((a,b) => 0.5 - Math.random())
 }
 
-function shuffleComps () {
-  compArray.sort((a,b) => 0.5 - Math.random())
-}
 
-//a function to dynamically generate a 3x3 grid and populate it with shuffled dinos, user info, and bird instance
-function populateGrid(humanSpecs) {
+//defines a function to dynamically generate a 3x3 grid and populate it with shuffled dinos, user info, and bird instance
+function populateFacts(humanSpecs) {
   shuffleCreatures()
   creatureArray.splice(4, 0, humanSpecs)
   buildPigeon()
@@ -103,8 +113,7 @@ function populateGrid(humanSpecs) {
         if (index === 4) {
           newCell.innerHTML+= `<h3>${creatureArray[index].name}</h3> `
           newFrame.appendChild(newPic)
-          //TODO comment  out the line below before submitting!
-          newCell.innerHTML+= "<br>" + `${creatureArray[index].name} is a human with an interest in dinosaurs!`
+          newCell.innerHTML+= "<br>" + `${humanSpecs.fact}`
           index +=1
         } else {
           newCell.innerHTML+= `<h3>${creatureArray[index].species}</h3> `
@@ -144,7 +153,7 @@ function compareHeight(humanSpecs) {
             index += 1
           } else if (humanSpecs.height > creatureArray[index].height) {
             newCell.innerHTML+= 
-            "<br>" + `You are ${humanSpecs.height - creatureArray[index].height} inches taller than a ${creatureArray[index].species}`
+            "<br>" + `You are ${humanSpecs.height - creatureArray[index].height} inches taller than ${creatureArray[index].species}`
             index +=1
           } else if (humanSpecs.height < creatureArray[index].height) {
             newCell.innerHTML+= 
