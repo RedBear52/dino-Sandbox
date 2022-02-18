@@ -99,6 +99,8 @@ function shuffleCreatures () {
 //shuffles creatureArray 
 //splices human into center of grid
 // builds a pigeon (have not yet figured out how to separate pigeon build from grid generators while still being able to reference its properties)
+//dynamically generated grid (table, rows, and cells)
+// dynamically populate the grid
 function populateFacts(humanSpecs) {
   shuffleCreatures()
   creatureArray.splice(4, 0, humanSpecs)
