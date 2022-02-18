@@ -56,7 +56,7 @@ function buildHuman () {
   randComp(userData) 
 }; 
 
-//invokes one of three comparison functions randomly using a switch statement
+//invokes one of three comparison functions randomly by way of a switch statement
 function randComp(humanSpecs) {
   const randomNumber = parseFloat(Math.floor(Math.random() * 4))
   switch (randomNumber) {
@@ -68,6 +68,7 @@ function randComp(humanSpecs) {
       break;
     case 2: 
       compareHeight(humanSpecs);
+      break;
     case 3:
       populateFacts(humanSpecs)
   }
@@ -94,7 +95,10 @@ function shuffleCreatures () {
 }
 
 
-//defines a function to dynamically generate a 3x3 grid and populate it with shuffled dinos, user info, and bird instance
+//defines a function to dynamically generate a 3x3 grid and populate it with facts
+//shuffles creatureArray 
+//splices human into center of grid
+// builds a pigeon (have not yet figured out how to separate pigeon build from grid generators while still being able to reference its properties)
 function populateFacts(humanSpecs) {
   shuffleCreatures()
   creatureArray.splice(4, 0, humanSpecs)
@@ -109,7 +113,6 @@ function populateFacts(humanSpecs) {
       let newFrame = newRow.appendChild(newCell)
       let newPic = document.createElement('img')
       newPic.src = creatureArray[index].image
-      // renderFacts() 
         if (index === 4) {
           newCell.innerHTML+= `<h3>${creatureArray[index].name}</h3> `
           newFrame.appendChild(newPic)
@@ -125,6 +128,8 @@ function populateFacts(humanSpecs) {
   }
 };
 
+//defines function (like fact populator above) 
+//this one compares height and inches and serves up comparisons to the user
 function compareHeight(humanSpecs) {
   shuffleCreatures()
   creatureArray.splice(4, 0, humanSpecs)
@@ -139,15 +144,14 @@ function compareHeight(humanSpecs) {
       let newFrame = newRow.appendChild(newCell)
       let newPic = document.createElement('img')
       newPic.src = creatureArray[index].image
-      // renderFacts() 
-        if (index === 4) {
-          newCell.innerHTML+= `<h3>${creatureArray[index].name}</h3> `
-          newFrame.appendChild(newPic)
-          newCell.innerHTML+= "<br>" + creatureArray[index].fact
-          index +=1
-        } else {
-          newCell.innerHTML+= `<h3>${creatureArray[index].species}</h3> `
-          newFrame.appendChild(newPic)
+      if (index === 4) {
+        newCell.innerHTML+= `<h3>${creatureArray[index].name}</h3> `
+        newFrame.appendChild(newPic)
+        newCell.innerHTML+= "<br>" + creatureArray[index].fact
+        index +=1
+      } else {
+        newCell.innerHTML+= `<h3>${creatureArray[index].species}</h3> `
+        newFrame.appendChild(newPic)
           if (humanSpecs.height === creatureArray[index].height) {
             newCell.innerHTML+= "<br>" + "What are the chances?!" + "<br>" + `Both you and ${creatureArray[index].species} are exactly ${humanSpecs.height} inches tall`
             index += 1
@@ -159,12 +163,14 @@ function compareHeight(humanSpecs) {
             newCell.innerHTML+= 
             "<br>" + `A ${creatureArray[index].species} measures ${creatureArray[index].height - humanSpecs.height} inches taller than you`
             index += 1           
-          }
+        }
       }
     }
   }
 };
 
+//defines function (like fact populator above) 
+//this one compares diet preferences and serves up comparisons to the user
 function compareDiet(humanSpecs) {
   shuffleCreatures()
   creatureArray.splice(4, 0, humanSpecs)
@@ -179,7 +185,6 @@ function compareDiet(humanSpecs) {
       let newFrame = newRow.appendChild(newCell)
       let newPic = document.createElement('img')
       newPic.src = creatureArray[index].image
-      // renderFacts() 
         if (index === 4) {
           newCell.innerHTML+= `<h3>${creatureArray[index].name}</h3> `
           newFrame.appendChild(newPic)
@@ -200,6 +205,8 @@ function compareDiet(humanSpecs) {
   }
 };
 
+//defines function (like fact populator above) 
+//this one compares weight and shares comparison with the user
 function compareWeight(humanSpecs) {
   shuffleCreatures()
   creatureArray.splice(4, 0, humanSpecs)
@@ -214,11 +221,9 @@ function compareWeight(humanSpecs) {
       let newFrame = newRow.appendChild(newCell)
       let newPic = document.createElement('img')
       newPic.src = creatureArray[index].image
-      // renderFacts() 
       if (index === 4) {
         newCell.innerHTML+= `<h3>${creatureArray[index].name}</h3> `
         newFrame.appendChild(newPic)
-        //TODO comment  out the line below before submitting!
         newCell.innerHTML+= "<br>" + creatureArray[index].fact
         index +=1
       } else {
