@@ -52,13 +52,15 @@ function buildHuman () {
   let weight = document.getElementById("user_weight").value
   let diet = document.getElementById("user_diet").value
   let image = "images/human.png"
-  let species = ""
+  let species = "human"
   let fact = ""
   const userData = new Creature(species, height, weight, image, diet, fact, name);
-  creatureArray.push("userData")
-  showMeHuman(userData)
-  return makeGrid(userData)
+  creatureArray.push(userData)
+  // showMeHuman(userData)
+  return populateGrid(userData)
 };
+
+let user = creatureArray[9]
 
 //clear form upon submission
 function clearForm() {
@@ -66,38 +68,44 @@ function clearForm() {
   eraser.outerHTML=''
 };
 
+function shuffleCreatures () {
+  creatureArray.sort((a,b) => 0.5 - Math.random())
+}
+
+
 //display userData to the DOM via the table ('grid') ele
-//applying template literals to streamline process and make more readable
-function showMeHuman (humanSpecs) {
-  let renderedUserData = 
-  `<div class="grid-content"">
-    <h3>${humanSpecs.name}</h3>
-    <p><img src="${humanSpecs.image}"</p>
-    <p>Height: ${parseFloat(humanSpecs.height)} inches</p>
-    <p>Weight: ${humanSpecs.weight} lbs</p>
-    <p>Diet: ${humanSpecs.diet}</p>
-  </div>`
+//applying template literals to streamline process and make code more readable
+// function showMeHuman (humanSpecs) {
+//   let renderedUserData = 
+//   `<div class="grid-content"">
+//     <h3>${humanSpecs.name}</h3>
+//     <p><img src="${humanSpecs.image}"</p>
+//     <p>Height: ${parseFloat(humanSpecs.height)} inches</p>
+//     <p>Weight: ${humanSpecs.weight} lbs</p>
+//     <p>Diet: ${humanSpecs.diet}</p>
+//   </div>`
   
-  const container=document.getElementById("grid");
-      container.innerHTML=renderedUserData;
-};
+//   const container=document.getElementById("grid");
+//       container.innerHTML=renderedUserData;
+// };
 
 //a function to dynamically generate a 3x3 grid dispalying user and dino data
-function makeGrid(humanSpecs) {
+function populateGrid(humanSpecs) {
+  shuffleCreatures()
   let infoGraphic = document.getElementById('grid')
   let index = 0
   for (let r = 0; r < 3; r++) {
   let newRow = document.createElement('tr')
   infoGraphic.appendChild(newRow)
     for (let c = 0; c < 3; c++) {
-      let randomNumber = Math.floor(Math.random() * 8)
       let newCell = document.createElement('td')
       let newFrame = newRow.appendChild(newCell)
       let newPic = document.createElement('img')
-      newPic.src = creatureArray[randomNumber].image
-      newCell.innerHTML+= `<h3>${creatureArray[randomNumber].species}</h3> `
+      // let randomNumber = Math.floor(Math.random() * 8)
+      newPic.src = creatureArray[index].image
+      newCell.innerHTML+= `<h3>${creatureArray[index].species}</h3> `
       newFrame.appendChild(newPic)
-      newCell.innerHTML+= "<br>" + creatureArray[randomNumber].fact
+      newCell.innerHTML+= "<br>" + creatureArray[index].fact
       index += 1
     }
   }
@@ -105,6 +113,14 @@ function makeGrid(humanSpecs) {
 
 
 
+// function shuffleCreatures() {
+//   let arr = shuffledArray
+//   let index = arr.length, j, temp;
+//   while(--index > 0) {
+//     j = Math.floor(Math.random() * (i+1))
+//   } 
+//   console.log(arr)
+// }
 
 
 
