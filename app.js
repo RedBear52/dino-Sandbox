@@ -43,15 +43,15 @@ form.addEventListener('submit', function (event) {
 //instantiates Human object from user input
 //then calls the random comparison function
 function buildHuman () {
-  let name = document.querySelector("#user_name").value
-  let heightFeet = parseFloat(document.getElementById("height_feet").value)
-  let heightInches = parseFloat(document.getElementById("height_inches").value)
-  let height = heightFeet * 12 + heightInches
-  let weight = document.getElementById("user_weight").value
-  let diet = document.getElementById("user_diet").value
-  let image = "images/human.png"
-  let species = "human"
-  let fact = ""
+  const name = document.querySelector("#user_name").value
+  const heightFeet = parseFloat(document.getElementById("height_feet").value)
+  const heightInches = parseFloat(document.getElementById("height_inches").value)
+  const height = heightFeet * 12 + heightInches
+  const weight = document.getElementById("user_weight").value
+  const diet = document.getElementById("user_diet").value
+  const image = "images/human.png"
+  const species = "human"
+  const fact = ""
   const userData = new Creature(species, height, weight, image, diet, fact, name);
   randComp(userData) 
 }; 
@@ -105,15 +105,15 @@ function populateFacts(humanSpecs) {
   shuffleCreatures()
   creatureArray.splice(4, 0, humanSpecs)
   buildPigeon()
-  let infoGraphic = document.getElementById('grid')
+  const infoGraphic = document.getElementById('grid')
   let index = 0
   for (let r = 0; r < 3; r++) {
-  let newRow = document.createElement('tr')
+  const newRow = document.createElement('tr')
   infoGraphic.appendChild(newRow)
     for (let c = 0; c < 3; c++) {
-      let newCell = document.createElement('td')
-      let newFrame = newRow.appendChild(newCell)
-      let newPic = document.createElement('img')
+      const newCell = document.createElement('td')
+      const newFrame = newRow.appendChild(newCell)
+      const newPic = document.createElement('img')
       newPic.src = creatureArray[index].image
         if (index === 4) {
           newCell.innerHTML+= `<h3>${creatureArray[index].name}</h3> `
@@ -136,15 +136,15 @@ function compareHeight(humanSpecs) {
   shuffleCreatures()
   creatureArray.splice(4, 0, humanSpecs)
   buildPigeon()
-  let infoGraphic = document.getElementById('grid')
+  const infoGraphic = document.getElementById('grid')
   let index = 0
   for (let r = 0; r < 3; r++) {
-  let newRow = document.createElement('tr')
+  const newRow = document.createElement('tr')
   infoGraphic.appendChild(newRow)
     for (let c = 0; c < 3; c++) {
-      let newCell = document.createElement('td')
-      let newFrame = newRow.appendChild(newCell)
-      let newPic = document.createElement('img')
+      const newCell = document.createElement('td')
+      const newFrame = newRow.appendChild(newCell)
+      const newPic = document.createElement('img')
       newPic.src = creatureArray[index].image
       if (index === 4) {
         newCell.innerHTML+= `<h3>${creatureArray[index].name}</h3> `
@@ -155,15 +155,18 @@ function compareHeight(humanSpecs) {
         newCell.innerHTML+= `<h3>${creatureArray[index].species}</h3> `
         newFrame.appendChild(newPic)
           if (humanSpecs.height === creatureArray[index].height) {
-            newCell.innerHTML+= "<br>" + "What are the chances?!" + "<br>" + `Both you and ${creatureArray[index].species} are exactly ${humanSpecs.height} inches tall`
+            newCell.innerHTML+= "<br>" + "What are the chances?!" + "<br>" + `Both you and 
+            ${creatureArray[index].species} are exactly ${humanSpecs.height} inches tall`
             index += 1
           } else if (humanSpecs.height > creatureArray[index].height) {
             newCell.innerHTML+= 
-            "<br>" + `You are ${humanSpecs.height - creatureArray[index].height} inches taller than ${creatureArray[index].species}`
+            "<br>" + `You are ${humanSpecs.height - creatureArray[index].height} 
+            inches taller than ${creatureArray[index].species}`
             index +=1
           } else if (humanSpecs.height < creatureArray[index].height) {
             newCell.innerHTML+= 
-            "<br>" + `A ${creatureArray[index].species} measures ${creatureArray[index].height - humanSpecs.height} inches taller than you`
+            "<br>" + `A ${creatureArray[index].species} measures 
+            ${creatureArray[index].height - humanSpecs.height} inches taller than you`
             index += 1           
         }
       }
@@ -177,15 +180,15 @@ function compareDiet(humanSpecs) {
   shuffleCreatures()
   creatureArray.splice(4, 0, humanSpecs)
   buildPigeon()
-  let infoGraphic = document.getElementById('grid')
+  const infoGraphic = document.getElementById('grid')
   let index = 0
   for (let r = 0; r < 3; r++) {
-  let newRow = document.createElement('tr')
+  const newRow = document.createElement('tr')
   infoGraphic.appendChild(newRow)
     for (let c = 0; c < 3; c++) {
-      let newCell = document.createElement('td')
-      let newFrame = newRow.appendChild(newCell)
-      let newPic = document.createElement('img')
+      const newCell = document.createElement('td')
+      const newFrame = newRow.appendChild(newCell)
+      const newPic = document.createElement('img')
       newPic.src = creatureArray[index].image
         if (index === 4) {
           newCell.innerHTML+= `<h3>${creatureArray[index].name}</h3> `
@@ -196,10 +199,12 @@ function compareDiet(humanSpecs) {
           newCell.innerHTML+= `<h3>${creatureArray[index].species}</h3> `
           newFrame.appendChild(newPic)
             if (humanSpecs.diet.toLowerCase() === creatureArray[index].diet) {
-              newCell.innerHTML+= "<br>" + `You and ${creatureArray[index].species} share the same eating style as both of you are ${humanSpecs.diet}s`
+              newCell.innerHTML+= "<br>" + `You and ${creatureArray[index].species} 
+              share the same eating style as both of you are ${humanSpecs.diet}s`
               index +=1
             } else {
-              newCell.innerHTML+= "<br>" + `Contrary to your ${humanSpecs.diet}'s diet, ${creatureArray[index].species} is all about that ${creatureArray[index].diet} life`
+              newCell.innerHTML+= "<br>" + `Contrary to your ${humanSpecs.diet}'s diet, 
+              ${creatureArray[index].species} is all about that ${creatureArray[index].diet} life`
               index += 1           
             }
       }
@@ -213,15 +218,15 @@ function compareWeight(humanSpecs) {
   shuffleCreatures()
   creatureArray.splice(4, 0, humanSpecs)
   buildPigeon()
-  let infoGraphic = document.getElementById('grid')
+  const infoGraphic = document.getElementById('grid')
   let index = 0
   for (let r = 0; r < 3; r++) {
-  let newRow = document.createElement('tr')
+  const newRow = document.createElement('tr')
   infoGraphic.appendChild(newRow)
     for (let c = 0; c < 3; c++) {
-      let newCell = document.createElement('td')
-      let newFrame = newRow.appendChild(newCell)
-      let newPic = document.createElement('img')
+      const newCell = document.createElement('td')
+      const newFrame = newRow.appendChild(newCell)
+      const newPic = document.createElement('img')
       newPic.src = creatureArray[index].image
       if (index === 4) {
         newCell.innerHTML+= `<h3>${creatureArray[index].name}</h3> `
@@ -231,7 +236,8 @@ function compareWeight(humanSpecs) {
       } else {
         newCell.innerHTML+= "<br>" + `<h3>${creatureArray[index].species}</h3> `
         newFrame.appendChild(newPic)
-        newCell.innerHTML += "<br>" + `${creatureArray[index].species} weighs in at ${creatureArray[index].weight} pounds compared to you at ${humanSpecs.weight}`
+        newCell.innerHTML += "<br>" + `${creatureArray[index].species} weighs in at 
+        ${creatureArray[index].weight} pounds compared to you at ${humanSpecs.weight}`
         index += 1          
     }
   }
