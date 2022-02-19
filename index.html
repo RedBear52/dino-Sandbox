@@ -18,49 +18,49 @@
   <div class="form_container" id="form_container">
   <form class="form" id="form">
 
-  <div class="form_input">
-    <p>Name:</p>
-    <input class="form-field_long" type="text" id="user_name" name="name" placeholder="Tater Jenkins" required>
-  </div>
+    <div class="form_input">
+      <p>Name:</p>
+      <input class="form-field_long" type="text" id="user_name" name="name" value="Tater Jenkins"  required>
+    </div>
 
-    <br>
+      <br>
 
-  <div class="form_input" id="user-height">
-    <p>Height:</p>
-    <label>
-      ft
-      <input class="form-field_short" id="height_feet" name="height_feet" placeholder="5" required>
-    </label>
-    <label>
-      in
-      <input class="form-field_short" id="height_inches" name="height_inches" placeholder="11" required>
-    </label>
-  </div>
+    <div class="form_input" id="user-height">
+      <p>Height:</p>
+      <label>
+        ft
+        <input class="form-field_short" type="number" id="height_feet" name="height_feet"  value="5" required>
+      </label>
+      <label>
+        in
+        <input class="form-field_short" type="number" id="height_inches" name="height_inches" value="5"  required>
+      </label>
+    </div>
 
-    <br>
+      <br>
 
-  <div class="form_input" id="user-weight">
-    <p>Weight:</p>
-    <label>
-      <input class="form-field_long" id="user_weight" name="user_weight" placeholder="175" required>
-      lbs
-    </label>
-  </div>
+    <div class="form_input" id="user-weight">
+      <p>Weight:</p>
+      <label>
+        <input class="form-field_long" type="number" id="user_weight" name="user_weight"  value="520" required>
+        lbs
+      </label>
+    </div>
 
-    <br>
+      <br>
 
-  <div class="form_input">
-    <p>Diet:</p>
-    <select  id="user_diet">
-      <option>Herbivore</option>
-      <option>Carnivore</option>
-      <option selected>Omnivore</option>
-    </select>
-  </div>
+    <div class="form_input">
+      <p>Diet:</p>
+      <select  id="user_diet">
+        <option>Herbivore</option>
+        <option>Carnivore</option>
+        <option selected>Omnivore</option>
+      </select>
+    </div>
 
-  <div>
-    <button class="button" id="btn" type="submit">Compare Me!</button>
-  </div>
+    <div>
+      <button class="button" id="btn" type="submit">Compare Me!</button>
+    </div>
 
   </form>
   </div>
